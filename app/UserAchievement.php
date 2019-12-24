@@ -19,13 +19,15 @@
             'language_id' => NULL,
 
             'user_achievement_name' => NULL,
+            'user_achievement_description' => NULL,
         ];
 
         protected $fillable = [
             'user_achievement_id',
             'language_id',
 
-            'user_achievement_name',
+			'user_achievement_name',
+			'user_achievement_description'
         ];
 
     }

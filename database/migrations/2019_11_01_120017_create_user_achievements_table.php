@@ -22,6 +22,7 @@
                 $table->unique(['user_achievement_id', 'language_id']);
 
                 $table->string('user_achievement_name');
+                $table->string('user_achievement_description');
             });
         }
 
