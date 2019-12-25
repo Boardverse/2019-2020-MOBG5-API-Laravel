@@ -14,15 +14,15 @@
         public function up()
         {
             Schema::create('user_achievements_list', function (Blueprint $table) {
-                $table->unsignedInteger('id')->primary();
+                $table->bigIncrements('id');
 
                 $table->bigInteger('user_id')->unsigned();
                 $table->foreign('user_id')->references('id')->on('users');
-                $table->unsignedInteger('user_achievement_id');
+                $table->bigInteger('user_achievement_id')->unsigned();
                 $table->foreign('user_achievement_id')->references('user_achievement_id')->on('user_achievements');
                 $table->unique(['user_id', 'user_achievement_id']);
 
-                $table->unsignedInteger('user_achievement_timestamp');
+                $table->bigInteger('user_achievement_timestamp')->unsigned();
             });
         }
 

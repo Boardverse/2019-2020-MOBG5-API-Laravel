@@ -13,11 +13,11 @@
          */
         public function up() {
             Schema::create('user_games_list', function (Blueprint $table) {
-                $table->unsignedInteger('id')->primary();
+                $table->bigIncrements('id');
 
                 $table->bigInteger('user_id')->unsigned();
                 $table->foreign('user_id')->references('id')->on('users');
-                $table->unsignedInteger('game_id');
+                $table->bigInteger('game_id')->unsigned();
                 $table->foreign('game_id')->references('game_id')->on('games');
                 $table->unique(['user_id', 'game_id']);
             });

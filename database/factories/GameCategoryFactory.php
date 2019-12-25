@@ -12,7 +12,7 @@
         function(Faker $faker) {
             return [
                 'game_category_id'   => $faker->randomNumber(),
-                'language_id'        => DB::table('languages')->select('language_id')->distinct()->get()->random(),
+                'language_id'        => DB::table('languages')->select('language_id')->distinct()->get()->random()->language_id,
                 'game_category_name' => $faker->word,
             ];
             /*

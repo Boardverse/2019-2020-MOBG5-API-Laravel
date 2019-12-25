@@ -2,7 +2,6 @@
 
     namespace App;
 
-    use Exception;
     use Illuminate\Database\Eloquent\Model;
 
     /**
@@ -68,7 +67,7 @@
         }
 
         public function game_categories() {
-            return $this->hasMany('App\GameCategory', 'game_id', 'game_id');
+            return $this->hasMany('App\GameCategoriesList', 'game_id', 'game_id');
         }
 
         public function game_description() {
@@ -76,7 +75,7 @@
         }
 
         public function game_score() {
-            return $this->hasOne('App\GameScore', 'game_id', 'game_id')->avg('value');
+            return $this->hasMany('App\GameScore', 'game_id', 'game_id');
         }
 
         public function game_pictures() {
@@ -84,7 +83,7 @@
         }
 
         public function game_publishers() {
-            return $this->hasMany('App\GamePublisher', 'game_id', 'game_id');
+            return $this->hasMany('App\GamePublishersList', 'game_id', 'game_id');
         }
 
         public function game_authors() {
@@ -92,11 +91,11 @@
         }
 
         public function game_awards() {
-            return $this->hasMany('App\GameAward', 'game_id', 'game_id');
+            return $this->hasMany('App\GameAwardsList', 'game_id', 'game_id');
         }
 
         public function game_languages() {
-            return $this->hasMany('App\Language', 'game_id', 'game_id');
+            return $this->hasMany('App\GameLanguagesList', 'game_id', 'game_id');
         }
 
     }

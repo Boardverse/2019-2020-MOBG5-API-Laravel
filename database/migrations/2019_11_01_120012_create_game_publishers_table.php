@@ -13,7 +13,7 @@
          */
         public function up() {
             Schema::create('game_publishers', function (Blueprint $table) {
-                $table->unsignedInteger('game_publisher_id')->primary();
+                $table->bigIncrements('game_publisher_id');
 
                 $table->string('game_publisher_name');
             });

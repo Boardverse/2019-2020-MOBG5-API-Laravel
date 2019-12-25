@@ -13,9 +13,9 @@
          */
         public function up() {
             Schema::create('game_names', function (Blueprint $table) {
-                $table->unsignedInteger('id')->primary();
+                $table->bigIncrements('id');
 
-                $table->unsignedInteger('game_id');
+                $table->bigInteger('game_id')->unsigned();
                 $table->foreign('game_id')->references('game_id')->on('games');
                 $table->string('language_id');
                 $table->foreign('language_id')->references('language_id')->on('languages');

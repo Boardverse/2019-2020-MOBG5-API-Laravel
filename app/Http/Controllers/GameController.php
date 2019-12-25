@@ -2,7 +2,6 @@
 	namespace App\Http\Controllers;
 
     use App\Game;
-    use App\UserGamesList;
 
     class GameController extends Controller {
 

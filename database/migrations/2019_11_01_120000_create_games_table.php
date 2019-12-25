@@ -13,19 +13,19 @@
          */
         public function up() {
             Schema::create('games', function (Blueprint $table) {
-                $table->unsignedInteger('game_id')->primary();
+                $table->bigIncrements('game_id');
 
                 $table->string('game_thumbnail_url')->nullable();
-                $table->unsignedInteger('game_publishing_date')->nullable();
-                $table->unsignedInteger('game_min_player')->nullable();
-                $table->unsignedInteger('game_recommended_player')->nullable();
-                $table->unsignedInteger('game_max_player')->nullable();
-                $table->unsignedInteger('game_min_duration')->nullable();
-                $table->unsignedInteger('game_average_duration')->nullable();
-                $table->unsignedInteger('game_max_duration')->nullable();
-                $table->unsignedInteger('game_min_age')->nullable();
-                $table->unsignedInteger('game_recommended_age')->nullable();
-                $table->unsignedInteger('game_max_age')->nullable();
+                $table->bigInteger('game_publishing_date')->nullable()->unsigned();
+                $table->bigInteger('game_min_player')->nullable()->unsigned();
+                $table->bigInteger('game_recommended_player')->nullable()->unsigned();
+                $table->bigInteger('game_max_player')->nullable()->unsigned();
+                $table->bigInteger('game_min_duration')->nullable()->unsigned();
+                $table->bigInteger('game_average_duration')->nullable()->unsigned();
+                $table->bigInteger('game_max_duration')->nullable()->unsigned();
+                $table->bigInteger('game_min_age')->nullable()->unsigned();
+                $table->bigInteger('game_recommended_age')->nullable()->unsigned();
+                $table->bigInteger('game_max_age')->nullable()->unsigned();
             });
         }
 

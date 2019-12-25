@@ -13,7 +13,7 @@
         function(Faker $faker) {
             return [
                 'game_id'          => Game::all()->random()->game_id,
-                'game_category_id' => DB::table('game_categories')->select('game_category_id')->distinct()->get()->random(),
+                'game_category_id' => DB::table('game_categories')->select('game_category_id')->distinct()->get()->random()->game_category_id,
             ];
             /*
              * May throw an exception if tuple already exists

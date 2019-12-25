@@ -6,7 +6,7 @@
 
     class GameLanguagesList extends Model {
 
-        protected $table = 'game_languages';
+        protected $table = 'game_languages_list';
 
         protected $primaryKey = 'id';
 

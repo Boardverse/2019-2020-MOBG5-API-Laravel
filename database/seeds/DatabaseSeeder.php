@@ -10,11 +10,12 @@
          * @return void
          */
         public function run() {
+            $this->call(LanguagesTableSeeder::class);
+
             $this->call(UsersTableSeeder::class);
                 $this->call(UserAchievementsTableSeeder::class);
                     $this->call(UserAchievementsListTableSeeder::class);
 
-            $this->call(LanguagesTableSeeder::class);
 
             $this->call(GamesTableSeeder::class);
 

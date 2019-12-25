@@ -14,9 +14,9 @@
         public function up()
         {
             Schema::create('user_achievements', function (Blueprint $table) {
-                $table->unsignedInteger('id')->primary();
+                $table->bigIncrements('id');
 
-                $table->unsignedInteger('user_achievement_id');
+                $table->bigInteger('user_achievement_id')->unsigned();
                 $table->string('language_id');
                 $table->foreign('language_id')->references('language_id')->on('languages');
                 $table->unique(['user_achievement_id', 'language_id']);

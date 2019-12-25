@@ -13,7 +13,7 @@
         function(Faker $faker) {
             return [
                 'game_id' => Game::all()->unique()->random()->game_id,
-                'language_id' => DB::table('languages')->select('language_id')->distinct()->get()->random(),
+                'language_id' => DB::table('languages')->select('language_id')->distinct()->get()->random()->language_id,
                 'game_name' => $faker->words(rand(1, 5), true),
             ];
             /*
