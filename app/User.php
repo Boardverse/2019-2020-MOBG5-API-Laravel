@@ -50,7 +50,7 @@
         ];
 
         public function getGamesOwnedAttribute() {
-            return $this->hasMany('App\UserGamesList', 'user_id', 'user_id')->count();
+            return $this->hasMany('App\UserCollection', 'user_id', 'user_id')->count();
         }
 
         public function getGamesReviewedAttribute() {
@@ -70,7 +70,7 @@
         }
 
         public function getCollectionAttribute() {
-            return $this->hasMany('App\UserGamesList', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
+            return $this->hasMany('App\UserCollection', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
         }
 
         public function getReviewsAttribute() {

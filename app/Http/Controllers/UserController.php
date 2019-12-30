@@ -3,7 +3,7 @@
 
     use App\Game;
     use App\User;
-    use App\UserGamesList;
+    use App\UserCollection;
     use Illuminate\Support\Facades\DB;
 
     class UserController extends Controller {

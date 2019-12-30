@@ -2,14 +2,14 @@
 
     use App\Game;
     use App\User;
-    use App\UserGamesList;
+    use App\UserCollection;
     use Faker\Generator as Faker;
     use Illuminate\Database\Eloquent\Factory;
 
     /**
      * @var Factory $factory
      */
-    $factory->define(UserGamesList::class,
+    $factory->define(UserCollection::class,
         function(Faker $faker) {
             return [
                 'user_id' => User::all()->random()->user_id,

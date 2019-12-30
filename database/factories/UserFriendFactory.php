@@ -2,7 +2,7 @@
 
     use App\User;
     use App\UserFriend;
-    use App\UserGamesList;
+    use App\UserCollection;
     use Faker\Generator as Faker;
     use Illuminate\Database\Eloquent\Factory;
 

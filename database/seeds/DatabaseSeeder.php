@@ -47,7 +47,7 @@
                 UserAchievementsTableSeeder::class,
                 UserAchievementsListTableSeeder::class,
 
-                UserGamesListTableSeeder::class,
+                UserCollectionTableSeeder::class,
 
                 UserWishlistsTableSeeder::class,
 

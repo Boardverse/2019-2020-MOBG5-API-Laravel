@@ -4,9 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class UserGamesList extends Model {
+    class UserCollection extends Model {
 
-        protected $table = 'user_games_list';
+        protected $table = 'user_collection';
 
         protected $primaryKey = 'id';
 

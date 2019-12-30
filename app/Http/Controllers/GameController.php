@@ -2,7 +2,7 @@
 	namespace App\Http\Controllers;
 
     use App\Game;
-    use App\UserGamesList;
+    use App\UserCollection;
     use Illuminate\Support\Facades\DB;
 
     class GameController extends Controller {
@@ -23,9 +23,9 @@
 		    $lastWeek = ((time() - (7 * 24 *  60 * 60)) * 1000);
 		    return response()->json([
 		        'data' =>
-		            UserGamesList::where('game_added_timestamp', '>=', $lastWeek)
-                    ->groupBy('user_games_list.game_id')
-                    ->select('user_games_list.game_id', DB::raw('count(*) as c'))
+		            UserCollection::where('game_added_timestamp', '>=', $lastWeek)
+                    ->groupBy('user_collection.game_id')
+                    ->select('user_collection.game_id', DB::raw('count(*) as c'))
                     ->orderBy('c', 'desc')
                     ->limit(20)
                     ->get()
