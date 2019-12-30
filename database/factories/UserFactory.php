@@ -12,10 +12,11 @@
     $factory->define(User::class,
         function(Faker $faker) {
             return [
-                'name'              => $faker->name,
-                'email'             => $faker->unique()->safeEmail,
-                'email_verified_at' => now(),
-                'password'          => Hash::make($faker->unique()->password),
-                'remember_token'    => Str::random(10),
+                'user_name'              => $faker->name,
+                'user_icon_url'          => $faker->imageUrl(),
+                'user_email'             => $faker->unique()->safeEmail,
+                'user_email_verified_at' => now(),
+                'user_password'          => Hash::make($faker->unique()->password),
+                'remember_token'         => Str::random(10),
             ];
         });

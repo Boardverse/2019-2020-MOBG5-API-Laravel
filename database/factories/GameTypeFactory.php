@@ -13,7 +13,7 @@
             return [
                 'game_type_id'   => $faker->randomNumber(),
                 'language_id'    => DB::table('languages')->select('language_id')->distinct()->get()->random()->language_id,
-                'game_type_name' => $faker->word,
+                'game_type_name' => 'Type ' . $faker->word,
             ];
             /*
              * May throw an exception if tuple already exists

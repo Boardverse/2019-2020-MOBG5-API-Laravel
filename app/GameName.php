@@ -31,4 +31,8 @@
             'game_name',
 		];
 
+        protected $visible = [
+            'game_name',
+        ];
+
     }

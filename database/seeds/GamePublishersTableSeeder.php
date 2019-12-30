@@ -11,6 +11,6 @@
 		 * @return void
 		 */
 		public function run() {
-			factory(GamePublisher::class, 50)->create();
+			factory(GamePublisher::class, 100)->create();
 		}
 	}

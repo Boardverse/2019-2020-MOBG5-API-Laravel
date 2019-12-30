@@ -18,26 +18,22 @@
             'user_id' => NULL,
             'game_id' => NULL,
 
-            'user_game_added_timestamp' => NULL,
+            'game_added_timestamp' => NULL,
         ];
 
         protected $fillable = [
             'user_id',
             'game_id',
 
-            'user_game_added_timestamp',
+            'game_added_timestamp',
         ];
 
-        protected $with = [
-            'games',
-        ];
+        public function getGameAttribute() {
+            return $this->hasOne('App\Game', 'game_id', 'game_id')->get()->first()->minGame;
+        }
 
-        protected $visible = [
-            'games',
-        ];
-
-        public function games() {
-            return $this->hasMany('App\Game', 'game_id', 'game_id');
+        public function getUserAttribute() {
+            return $this->hasOne('App\User', 'id', 'user_id');
         }
 
     }

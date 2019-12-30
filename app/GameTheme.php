@@ -5,11 +5,11 @@
     use Illuminate\Database\Eloquent\Model;
 
     /**
-     * Represents a game's category
+     * Represents a game's theme
      */
-    class GameCategory extends Model {
+    class GameTheme extends Model {
 
-        protected $table = 'game_categories';
+        protected $table = 'game_themes';
 
         protected $primaryKey = 'id';
 
@@ -18,17 +18,21 @@
         public $timestamps = false;
 
         protected $attributes = [
-            'game_category_id' => NULL,
+            'game_theme_id' => NULL,
             'language_id' => NULL,
 
-            'game_category_name' => NULL,
+            'game_theme_name' => NULL,
         ];
 
         protected $fillable = [
-            'game_category_id',
+            'game_theme_id',
             'language_id',
 
-            'game_category_name',
+            'game_theme_name',
+        ];
+
+        protected $visible = [
+            'game_theme_name',
         ];
 
     }

@@ -12,7 +12,7 @@
     $factory->define(UserAchievementsList::class,
         function(Faker $faker) {
             return [
-                'user_id'                    => User::all()->random()->id,
+                'user_id'                    => User::all()->random()->user_id,
                 'user_achievement_id'        => UserAchievement::all()->random()->user_achievement_id,
                 'user_achievement_timestamp' => time() * 1000,
             ];

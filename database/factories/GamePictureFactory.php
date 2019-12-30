@@ -12,6 +12,6 @@
         function(Faker $faker) {
             return [
                 'game_id'          => Game::all()->random()->game_id,
-                'game_picture_url' => $faker->url,
+                'game_picture_url' => $faker->imageUrl(),
             ];
         });

@@ -4,9 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class GameLanguagesList extends Model {
+    class GameThemesList extends Model {
 
-        protected $table = 'game_languages_list';
+        protected $table = 'game_themes_list';
 
         protected $primaryKey = 'id';
 
@@ -16,25 +16,25 @@
 
         protected $attributes = [
             'game_id' => NULL,
-            'language_id' => NULL,
+            'game_theme_id' => NULL,
         ];
 
         protected $fillable = [
             'game_id',
-            'language_id',
+            'game_theme_id',
         ];
 
         protected $visible = [
-            'language_id',
-            'language_name',
+            'game_theme_name',
+            'game_theme_id',
         ];
 
         protected $appends = [
-            'language_name',
+            'game_theme_name',
         ];
 
-        public function getLanguageNameAttribute() {
-            return $this->hasOne('App\Language', 'language_id', 'language_id')->get()->first()->language_name;
+        public function getGameThemeNameAttribute() {
+            return $this->hasOne('App\GameTheme', 'game_theme_id', 'game_theme_id')->get()->first()->game_theme_name;
         }
 
     }

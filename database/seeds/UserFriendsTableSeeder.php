@@ -1,9 +1,10 @@
 <?php
 
-    use App\User;
+    use App\UserFriend;
+    use App\UserWishlist;
     use Illuminate\Database\Seeder;
 
-    class UsersTableSeeder extends Seeder {
+    class UserFriendsTableSeeder extends Seeder {
 
         /**
          * Run the database seeds.
@@ -11,6 +12,6 @@
          * @return void
          */
         public function run() {
-            factory(User::class, 100)->create();
+            factory(UserFriend::class, 50)->create();
         }
     }

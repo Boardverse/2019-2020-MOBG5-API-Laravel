@@ -10,6 +10,6 @@
     $factory->define(GameAward::class,
         function(Faker $faker) {
             return [
-                'game_author_name' => $faker->firstName . ' ' . $faker->lastName,
+                'game_award_name' => 'Award ' . $faker->word,
             ];
         });

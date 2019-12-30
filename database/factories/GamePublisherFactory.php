@@ -10,6 +10,6 @@
     $factory->define(GamePublisher::class,
         function(Faker $faker) {
             return [
-                'game_publisher_name' => $faker->company,
+                'game_publisher_name' => 'Publisher ' . $faker->company,
             ];
         });

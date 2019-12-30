@@ -4,6 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
+    /**
+     * Represents a game's description
+     */
     class GameDescription extends Model {
 
         protected $table = 'game_descriptions';
@@ -24,14 +27,11 @@
         protected $fillable = [
             'game_id',
             'language_id',
+
             'game_description',
         ];
 
         protected $visible = [
-            'game_description',
-        ];
-
-        protected $with = [
             'game_description',
         ];
 

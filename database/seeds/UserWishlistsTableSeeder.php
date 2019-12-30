@@ -1,9 +1,9 @@
 <?php
 
-    use App\GameAward;
+    use App\UserWishlist;
     use Illuminate\Database\Seeder;
 
-	class GameAwardsTableSeeder extends Seeder {
+	class UserWishlistsTableSeeder extends Seeder {
 
 		/**
 		 * Run the database seeds.
@@ -11,6 +11,6 @@
 		 * @return void
 		 */
 		public function run() {
-			factory(GameAward::class, 100)->create();
+			factory(UserWishlist::class, 50)->create();
 		}
 	}

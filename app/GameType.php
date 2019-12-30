@@ -31,4 +31,8 @@
             'game_type_name',
         ];
 
+        protected $visible = [
+            'game_type_name',
+        ];
+
     }

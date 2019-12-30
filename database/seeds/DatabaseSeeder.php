@@ -1,6 +1,7 @@
 <?php
 
     use Illuminate\Database\Seeder;
+    use Illuminate\Support\Facades\DB;
 
     class DatabaseSeeder extends Seeder {
 
@@ -8,42 +9,70 @@
          * Seed the application's database.
          *
          * @return void
+         * @throws Exception
          */
         public function run() {
-            $this->call(LanguagesTableSeeder::class);
+            $classes = [
+                LanguagesTableSeeder::class,
 
-            $this->call(UsersTableSeeder::class);
-                $this->call(UserAchievementsTableSeeder::class);
-                    $this->call(UserAchievementsListTableSeeder::class);
+                GamesTableSeeder::class,
 
+                GameAuthorsTableSeeder::class,
+                GameAuthorsListTableSeeder::class,
 
-            $this->call(GamesTableSeeder::class);
+                GameAwardsTableSeeder::class,
+                GameAwardsListTableSeeder::class,
 
-                $this->call(GameAuthorsTableSeeder::class);
-                    $this->call(GameAuthorsListTableSeeder::class);
+                GameThemesTableSeeder::class,
+                GameThemesListTableSeeder::class,
 
-                $this->call(GameAwardsTableSeeder::class);
-                    $this->call(GameAwardsListTableSeeder::class);
+                GameDescriptionsTableSeeder::class,
 
-                $this->call(GameCategoriesTableSeeder::class);
-                    $this->call(GameCategoriesListTableSeeder::class);
+                GameNamesTableSeeder::class,
 
-                $this->call(GameDescriptionsTableSeeder::class);
+                GamePicturesTableSeeder::class,
 
-                $this->call(GameLanguagesListTableSeeder::class);
+                GamePublishersTableSeeder::class,
+                GamePublishersListTableSeeder::class,
 
-                $this->call(GameNamesTableSeeder::class);
+                GameTypesTableSeeder::class,
+                GameTypesListTableSeeder::class,
 
-                $this->call(GamePicturesTableSeeder::class);
+                GameLanguagesListTableSeeder::class,
 
-                $this->call(GamePublishersTableSeeder::class);
-                    $this->call(GamePublishersListTableSeeder::class);
+                UsersTableSeeder::class,
 
-                $this->call(GameScoresTableSeeder::class);
+                GameScoresTableSeeder::class,
 
-                $this->call(GameTypesTableSeeder::class);
-                    $this->call(GameTypesListTableSeeder::class);
+                UserAchievementsTableSeeder::class,
+                UserAchievementsListTableSeeder::class,
 
-            $this->call(UserGamesListTableSeeder::class);
+                UserGamesListTableSeeder::class,
+
+                UserWishlistsTableSeeder::class,
+
+                UserFriendsTableSeeder::class,
+            ];
+
+            foreach($classes as $class) {
+                DB::beginTransaction();
+                $i = 0;
+                while(true){
+                    try {
+                        $this->call($class);
+                        DB::commit();
+                        break;
+                    } catch(Exception $e) {
+                        DB::rollBack();
+                        $i++;
+                        if($i > 5) {
+                            throw $e;
+                        }
+                        sleep(1);
+                        continue;
+                    }
+                }
+            }
+
         }
     }

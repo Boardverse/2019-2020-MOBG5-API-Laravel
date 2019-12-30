@@ -4,7 +4,7 @@
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
 
-    class CreateGameCategoriesTable extends Migration {
+    class CreateGameThemesTable extends Migration {
 
         /**
          * Run the migrations.
@@ -12,15 +12,15 @@
          * @return void
          */
         public function up() {
-            Schema::create('game_categories', function (Blueprint $table) {
+            Schema::create('game_themes', function (Blueprint $table) {
                 $table->bigIncrements('id');
 
-                $table->bigInteger('game_category_id')->unsigned();
+                $table->bigInteger('game_theme_id')->unsigned();
                 $table->string('language_id');
                 $table->foreign('language_id')->references('language_id')->on('languages');
-                $table->string('game_category_name');
+                $table->string('game_theme_name');
 
-                $table->unique(['game_category_id', 'language_id']);
+                $table->unique(['game_theme_id', 'language_id']);
             });
         }
 
@@ -30,7 +30,7 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists('game_categories');
+            Schema::dropIfExists('game_themes');
         }
 
     }

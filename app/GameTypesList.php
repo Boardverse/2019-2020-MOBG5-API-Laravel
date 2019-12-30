@@ -24,15 +24,16 @@
             'game_type_id',
         ];
 
-        protected $with = [
-            'game_type_name',
-        ];
-
         protected $visible = [
             'game_type_name',
+            'game_type_id',
         ];
 
-        public function game_type_name() {
-            return $this->hasOne('App\GameType', 'game_type_id', 'game_type_id');
+        protected $appends = [
+            'game_type_name',
+        ];
+
+        public function getGameTYpeNameAttribute() {
+            return $this->hasOne('App\GameType', 'game_type_id', 'game_type_id')->get()->first()->game_type_name;
         }
     }

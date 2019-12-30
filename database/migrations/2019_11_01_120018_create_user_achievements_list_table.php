@@ -17,7 +17,7 @@
                 $table->bigIncrements('id');
 
                 $table->bigInteger('user_id')->unsigned();
-                $table->foreign('user_id')->references('id')->on('users');
+                $table->foreign('user_id')->references('user_id')->on('users');
                 $table->bigInteger('user_achievement_id')->unsigned();
                 $table->foreign('user_achievement_id')->references('user_achievement_id')->on('user_achievements');
                 $table->unique(['user_id', 'user_achievement_id']);

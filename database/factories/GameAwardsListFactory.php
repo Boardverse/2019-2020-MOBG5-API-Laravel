@@ -14,7 +14,7 @@
             return [
                 'game_award_id' => GameAward::all()->random()->game_award_id,
                 'game_id'       => Game::all()->random()->game_id,
-                'year'          => $faker->year,
+                'game_award_year'          => $faker->year,
             ];
             /*
              * May throw an exception if tuple already exists

@@ -23,4 +23,8 @@
             'game_id',
             'game_picture_url',
         ];
+
+        protected $visible = [
+            'game_picture_url',
+        ];
     }

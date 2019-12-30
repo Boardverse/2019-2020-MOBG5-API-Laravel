@@ -23,4 +23,8 @@
             'game_publisher_id',
             'game_publisher_name',
         ];
+
+        protected $visible = [
+            'game_publisher_name',
+        ];
     }

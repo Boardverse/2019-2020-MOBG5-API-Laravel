@@ -24,16 +24,17 @@
             'game_author_id',
         ];
 
-        protected $with = [
-            'game_author_name',
-        ];
-
         protected $visible = [
             'game_author_name',
+            'game_author_id',
         ];
 
-        public function game_author_name() {
-            return $this->hasOne('App\GameAuthor', 'game_author_id', 'game_author_id');
+        protected $appends = [
+            'game_author_name',
+        ];
+
+        public function getGameAuthorNameAttribute() {
+            return $this->hasOne('App\GameAuthor', 'game_author_id', 'game_author_id')->get()->first()->game_author_name;
         }
 
     }

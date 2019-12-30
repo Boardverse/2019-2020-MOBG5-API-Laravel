@@ -4,9 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class GameScore extends Model {
+    class UserFriend extends Model {
 
-        protected $table = 'game_scores';
+        protected $table = 'user_friends';
 
         protected $primaryKey = 'id';
 
@@ -15,17 +15,16 @@
         public $timestamps = false;
 
         protected $attributes = [
-            'game_id' => NULL,
             'user_id' => NULL,
-
-            'game_score' => NULL,
+            'friend_id' => NULL,
         ];
 
         protected $fillable = [
-            'game_id',
             'user_id',
-
-            'game_score',
+            'friend_id',
         ];
 
+        public function getFriendAttribute() {
+            return $this->hasOne('App\User', 'user_id', 'friend_id')->get()->first()->minUser;
+        }
     }

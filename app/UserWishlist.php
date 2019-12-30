@@ -4,9 +4,9 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class GameScore extends Model {
+    class UserWishlist extends Model {
 
-        protected $table = 'game_scores';
+        protected $table = 'user_wishlists';
 
         protected $primaryKey = 'id';
 
@@ -17,15 +17,10 @@
         protected $attributes = [
             'game_id' => NULL,
             'user_id' => NULL,
-
-            'game_score' => NULL,
         ];
 
         protected $fillable = [
             'game_id',
             'user_id',
-
-            'game_score',
         ];
-
     }

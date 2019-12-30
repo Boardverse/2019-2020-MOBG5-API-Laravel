@@ -21,8 +21,8 @@
             $game_max_age = rand($game_recommended_age, 70);
 
             return [
-                'game_thumbnail_url'      => $faker->url,
-                'game_publishing_date'    => $faker->year,
+                'game_thumbnail_url'      => $faker->imageUrl(),
+                'game_publishing_date'    => $faker->unixTime() * 1000,
                 'game_min_player'         => $game_min_player,
                 'game_recommended_player' => $game_recommended_player,
                 'game_max_player'         => $game_max_player,

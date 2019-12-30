@@ -19,9 +19,9 @@
                 $table->foreign('game_award_id')->references('game_award_id')->on('game_awards');
                 $table->bigInteger('game_id')->unsigned();
                 $table->foreign('game_id')->references('game_id')->on('games');
-                $table->bigInteger('year')->unsigned();
+                $table->bigInteger('game_award_year')->unsigned();
 
-                $table->unique(['game_award_id', 'game_id', 'year']);
+                $table->unique(['game_award_id', 'game_id', 'game_award_year']);
             });
         }
 

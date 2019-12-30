@@ -3,6 +3,8 @@
     namespace App;
 
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Support\Facades\DB;
+    use function foo\func;
 
     /**
      * Represents a board game
@@ -45,57 +47,78 @@
             'game_max_age',
         ];
 
-        protected $with = [
+        protected $appends = [
             'game_name',
             'game_types',
-            'game_categories',
+            'game_themes',
             'game_description',
             'game_score',
             'game_pictures',
             'game_publishers',
             'game_authors',
-            'game_awards',
             'game_languages',
+            'game_awards',
         ];
 
-        public function game_name() {
-            return $this->hasOne('App\GameName', 'game_id', 'game_id');
+        public function getGameNameAttribute() {
+            $name = $this->hasOne('App\GameName', 'game_id', 'game_id')->get()->first();
+            return isset($name) ? $name->game_name : NULL;
         }
 
-        public function game_types() {
-            return $this->hasMany('App\GameTypesList', 'game_id', 'game_id')->with('game_type_name');
+        public function getGameTypesAttribute() {
+            return $this->hasMany('App\GameTypesList', 'game_id', 'game_id')->get();
         }
 
-        public function game_categories() {
-            return $this->hasMany('App\GameCategoriesList', 'game_id', 'game_id');
+        public function getGameThemesAttribute() {
+            return $this->hasMany('App\GameThemesList', 'game_id', 'game_id')->get();
         }
 
-        public function game_description() {
-            return $this->hasOne('App\GameDescription', 'game_id', 'game_id');
+        public function getGameDescriptionAttribute() {
+            $description = $this->hasOne('App\GameDescription', 'game_id', 'game_id')->get()->first();
+            return isset($description) ? $description->game_description : NULL;
         }
 
-        public function game_score() {
-            return $this->hasMany('App\GameScore', 'game_id', 'game_id');
+        public function getGameScoreAttribute() {
+            return $this->hasMany('App\GameScore', 'game_id', 'game_id')->average('game_score');
         }
 
-        public function game_pictures() {
-            return $this->hasMany('App\GamePicture', 'game_id', 'game_id');
+        public function getGamePicturesAttribute() {
+            return $this->hasMany('App\GamePicture', 'game_id', 'game_id')->get()->map(function($item) { return $item->game_picture_url; });
         }
 
-        public function game_publishers() {
-            return $this->hasMany('App\GamePublishersList', 'game_id', 'game_id');
+        public function getGamePublishersAttribute() {
+            return $this->hasMany('App\GamePublishersList', 'game_id', 'game_id')->get();
         }
 
-        public function game_authors() {
-            return $this->hasMany('App\GameAuthorsList', 'game_id', 'game_id');
+        public function getGameAuthorsAttribute() {
+            return $this->hasMany('App\GameAuthorsList', 'game_id', 'game_id')->get();
         }
 
-        public function game_awards() {
-            return $this->hasMany('App\GameAwardsList', 'game_id', 'game_id');
+        public function getGameAwardsAttribute() {
+            return $this->hasMany('App\GameAwardsList', 'game_id', 'game_id')->get();
         }
 
-        public function game_languages() {
-            return $this->hasMany('App\GameLanguagesList', 'game_id', 'game_id');
+        public function getGameLanguagesAttribute() {
+            return $this->hasMany('App\GameLanguagesList', 'game_id', 'game_id')->get();
+        }
+
+        public function minGame() {
+            return $this->hasOne('App\MinGame', 'game_id', 'game_id');
+        }
+
+        public function getScoresAttribute() {
+            return DB::table('game_scores')
+                ->rightJoin('game_scores_values', function($join) {
+                    $join->on('game_scores_value', '=', 'game_score')->where('game_id', '=', $this->game_id);
+                })
+                ->groupBy('game_scores_value')
+                ->orderBy('game_scores_value', 'asc')
+                ->select(DB::raw('game_scores_value as game_score_value'), DB::raw('count(game_score) as game_score_count'))
+                ->get();
+        }
+
+        public function getSameEditorAttribute() {
+            return $this->hasMany('');
         }
 
     }

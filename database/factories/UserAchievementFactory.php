@@ -14,7 +14,7 @@
                 'user_achievement_id'          => $faker->randomNumber(),
                 'language_id'                  => DB::table('languages')->select('language_id')->distinct()->get()->random()->language_id,
                 'user_achievement_name'        => $faker->word,
-                'user_achievement_description' => $faker->sentence,
+                'user_achievement_description' => 'Achievement ' . $faker->sentence,
             ];
             /*
              * May throw an exception if tuple already exists

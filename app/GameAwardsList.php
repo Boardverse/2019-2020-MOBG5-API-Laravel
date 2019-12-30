@@ -26,7 +26,7 @@
             'game_award_year',
         ];
 
-        protected $with = [
+        protected $appends = [
             'game_award_name',
         ];
 
@@ -35,8 +35,8 @@
             'game_award_year',
         ];
 
-        public function game_award_name() {
-            return $this->hasOne('App\GameAward', 'game_award_id', 'game_award_id');
+        public function getGameAwardNameAttribute() {
+            return $this->hasOne('App\GameAward', 'game_award_id', 'game_award_id')->get()->first()->game_award_name;
         }
 
     }

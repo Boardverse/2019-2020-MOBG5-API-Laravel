@@ -12,8 +12,9 @@
     $factory->define(UserGamesList::class,
         function(Faker $faker) {
             return [
-                'user_id' => User::all()->random()->id,
+                'user_id' => User::all()->random()->user_id,
                 'game_id' => Game::all()->random()->game_id,
+                'game_added_timestamp' => time() * 1000,
             ];
             /*
              * May throw an exception if tuple already exists
