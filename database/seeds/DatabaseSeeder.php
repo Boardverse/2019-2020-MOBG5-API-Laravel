@@ -52,6 +52,8 @@
                 UserWishlistsTableSeeder::class,
 
                 UserFriendsTableSeeder::class,
+
+                UserPlayedTableSeeder::class,
             ];
 
             foreach($classes as $class) {

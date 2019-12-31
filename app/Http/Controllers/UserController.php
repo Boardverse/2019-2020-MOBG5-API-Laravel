@@ -38,4 +38,28 @@
             ]);
         }
 
+        public function played(User $user) {
+            return response()->json([
+                'data' => $user->played,
+            ]);
+        }
+
+        public function wishlist(User $user) {
+            return response()->json([
+                'data' => $user->wishlist,
+            ]);
+        }
+
+        public function achievements(User $user) {
+            return response()->json([
+                'data' => $user->achievements,
+            ]);
+        }
+
+        public function activity(User $user) {
+            return response()->json([
+                'data' => $user->activity,
+            ]);
+        }
+
     }

@@ -117,7 +117,11 @@
                 ->get();
         }
 
-        public function getSameEditorAttribute() {
+        public function getsimilarAttribute() {
+            return [];
+        }
+
+        public function getsamePublisherAttribute() {
             return $this->hasMany('');
         }
 

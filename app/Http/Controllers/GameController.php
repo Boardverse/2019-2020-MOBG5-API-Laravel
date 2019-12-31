@@ -29,7 +29,7 @@
                     ->orderBy('c', 'desc')
                     ->limit(20)
                     ->get()
-                    ->map(function($item) { return $item->game->minGame; }),
+                    ->map(function($item) { return $item->game; }),
             ]);
         }
 
@@ -55,5 +55,45 @@
                 'data' => $game->scores,
             ]);
         }
+
+
+        public function similar(Game $game) {
+		    return response()->json([
+		        'data' => $game->similar,
+            ]);
+        }
+
+        public function samePublisher(Game $game) {
+		    return response()->json([
+		        'data' => $game->samePublisher,
+            ]);
+        }
+
+        // TODO
+        public function alsoPlaying(Game $game) {
+		    return response()->json([
+		        'data' => [],
+            ]);
+        }
+
+        // TODO
+        public function friendsOwning(Game $game) {
+		    return response()->json([
+		        'data' => [],
+            ]);
+        }
+
+        public function sameType(Game $game) {
+		    return response()->json([
+		        'data' => $game->sameType,
+            ]);
+        }
+
+        public function sameTheme(Game $game) {
+		    return response()->json([
+		        'data' => $game->sameTheme,
+            ]);
+        }
+
 
 	}

@@ -37,6 +37,7 @@
             'games_owned',
             'games_reviewed',
             'games_wishlisted',
+            'games_played',
         ];
 
         protected $casts = [
@@ -47,6 +48,7 @@
             'games_owned',
             'games_reviewed',
             'games_wishlisted',
+            'games_played',
         ];
 
         public function getGamesOwnedAttribute() {
@@ -59,6 +61,10 @@
 
         public function getGamesWishlistedAttribute() {
             return $this->hasMany('App\UserWishlist', 'user_id', 'user_id')->count();
+        }
+
+        public function getGamesPlayedAttribute() {
+            return $this->hasMany('App\UserPlayed', 'user_id', 'user_id')->count();
         }
 
         public function minUser() {
@@ -81,9 +87,16 @@
             return $this->hasMany('App\UserPlayed', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
         }
 
+        public function getWishlistAttribute() {
+            return $this->hasMany('App\UserWishlist', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
+        }
 
-        public function achievements() {
+        public function getAchievementsAttribute() {
+            return $this->hasMany('App\UserAchievementsList', 'user_id', 'user_id')->get();
+        }
 
+        public function getActivityAttribute() {
+            return [];
         }
 
 
