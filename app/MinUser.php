@@ -18,13 +18,14 @@
             'user_icon_url' => NULL,
         ];
 
-        protected $fillable = [
-            'user_name',
-            'user_icon_url',
+        protected $hidden = [
+            'user_email',
+            'user_email_verified_at',
+            'user_password',
+            'remember_token',
         ];
 
-        protected $visible = [
-            'user_id',
+        protected $fillable = [
             'user_name',
             'user_icon_url',
         ];

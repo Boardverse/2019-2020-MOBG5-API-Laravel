@@ -24,17 +24,21 @@
             'game_author_id',
         ];
 
-        protected $visible = [
-            'game_author_name',
-            'game_author_id',
+        protected $hidden = [
+            'id',
+            'game_id',
         ];
 
         protected $appends = [
-            'game_author_name',
+            'game_author',
         ];
 
-        public function getGameAuthorNameAttribute() {
-            return $this->hasOne('App\GameAuthor', 'game_author_id', 'game_author_id')->get()->first()->game_author_name;
+        public function getGameAuthorAttribute() {
+            return $this->hasOne('App\GameAuthor', 'game_author_id', 'game_author_id')->get()->first();
+        }
+
+        public function getGamesAttribute() {
+            return $this->hasMany('App\Game', 'game_id', 'game_id')->get();
         }
 
     }

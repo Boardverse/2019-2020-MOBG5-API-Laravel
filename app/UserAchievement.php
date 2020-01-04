@@ -30,10 +30,4 @@
 			'user_achievement_description',
         ];
 
-        protected $visible = [
-            'user_achievement_id',
-            'user_achievement_name',
-            'user_achievement_description',
-        ];
-
     }

@@ -2,9 +2,8 @@
     namespace App\Http\Controllers;
 
     use App\Game;
+    use App\Http\Middleware\Login;
     use App\User;
-    use App\UserCollection;
-    use Illuminate\Support\Facades\DB;
 
     class UserController extends Controller {
 
@@ -60,6 +59,54 @@
             return response()->json([
                 'data' => $user->activity,
             ]);
+        }
+
+        // TODO
+        public function friendsLoving() {
+            $user = Login::getUser();
+            return response()->json([
+                'data' => $user->friendsLoving,
+            ]);
+        }
+
+        // TODO
+        public function friendsPlaying() {
+
+        }
+
+        // TODO
+        public function addCollection() {
+
+        }
+
+        // TODO
+        public function removeCollection(Game $game) {
+
+        }
+
+        // TODO
+        public function addPlayed(Game $game) {
+
+        }
+
+        // TODO
+        public function removePlayed(Game $game) {
+
+        }
+
+        // TODO
+        public function addWishlist(Game $game) {
+
+        }
+
+        // TODO
+        public function removeWishlist(Game $game) {
+
+        }
+
+        // TODO
+        public function rate(Game $game) {
+
         }
 
     }

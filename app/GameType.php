@@ -24,6 +24,11 @@
             'game_type_name' => NULL,
         ];
 
+        protected $hidden = [
+            'id',
+            'language_id',
+        ];
+
         protected $fillable = [
             'game_type_id',
             'language_id',
@@ -31,8 +36,8 @@
             'game_type_name',
         ];
 
-        protected $visible = [
-            'game_type_name',
-        ];
+        public function getGamesAttribute() {
+            return $this->hasMany('App\GameTypesList', 'game_type_id', 'game_type_id')->get()->map(function($item) { return $item->game; });
+        }
 
     }

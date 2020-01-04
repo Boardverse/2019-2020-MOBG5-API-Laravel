@@ -21,6 +21,11 @@
             'game_score' => NULL,
         ];
 
+        protected $hidden = [
+            'id',
+            'user_id',
+        ];
+
         protected $fillable = [
             'game_id',
             'user_id',

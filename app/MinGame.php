@@ -25,15 +25,21 @@
         protected $fillable = [
         ];
 
-        protected $appends = [
-            'game_name',
-            'game_score',
+        protected $hidden = [
+            'game_publishing_date',
+            'game_min_player',
+            'game_recommended_player',
+            'game_max_player',
+            'game_min_duration',
+            'game_average_duration',
+            'game_max_duration',
+            'game_min_age',
+            'game_recommended_age',
+            'game_max_age',
         ];
 
-        protected $visible = [
-            'game_id',
+        protected $appends = [
             'game_name',
-            'game_thumbnail_url',
             'game_score',
         ];
 

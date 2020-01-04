@@ -31,8 +31,4 @@
             'game_description',
         ];
 
-        protected $visible = [
-            'game_description',
-        ];
-
     }

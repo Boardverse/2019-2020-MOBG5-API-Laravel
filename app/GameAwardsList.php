@@ -26,13 +26,14 @@
             'game_award_year',
         ];
 
-        protected $appends = [
-            'game_award_name',
+        protected $hidden = [
+            'id',
+            'game_id',
+            'game_award_id',
         ];
 
-        protected $visible = [
+        protected $appends = [
             'game_award_name',
-            'game_award_year',
         ];
 
         public function getGameAwardNameAttribute() {

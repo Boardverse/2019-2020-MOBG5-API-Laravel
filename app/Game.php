@@ -91,7 +91,7 @@
         }
 
         public function getGameAuthorsAttribute() {
-            return $this->hasMany('App\GameAuthorsList', 'game_id', 'game_id')->get();
+            return $this->hasMany('App\GameAuthorsList', 'game_id', 'game_id')->get()->map(function($item) { return $item->game_author; });
         }
 
         public function getGameAwardsAttribute() {
@@ -117,12 +117,42 @@
                 ->get();
         }
 
-        public function getsimilarAttribute() {
+        public function getAlsoPlayingAttribute() {
+            return Game::whereIn('game_id', array_column(
+                DB::query()
+                    ->select('game_id')
+                    ->fromSub(function($subquery) {
+                        $subquery->from('user_collection')
+                            ->select('user_id')
+                            ->where('game_id', '=', $this->game_id);
+                    }, 'u')
+                    ->join('user_collection', 'user_collection.user_id', '=', 'u.user_id')
+                    ->where('game_id', '!=', $this->game_id)
+                    ->get()
+                    ->toArray(),
+                    'game_id')
+                )
+                ->get()
+                ->map(function($item) {
+                    return $item->minGame;
+                });
+        }
+
+        // TODO
+        public function getSimilarAttribute() {
             return [];
         }
 
-        public function getsamePublisherAttribute() {
-            return $this->hasMany('');
+        public function getSamePublisherAttribute() {
+            return $this->hasMany('App\GamePublishersList', 'game_id', 'game_id')->get()->random()->publisher->games;
+        }
+
+        public function getSameThemeAttribute() {
+            return array_unique(array_merge($this->hasMany('App\GameThemesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->theme->games; })->toArray()), SORT_REGULAR);
+        }
+
+        public function getSameTypeAttribute() {
+            return array_unique(array_merge($this->hasMany('App\GameTypesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->type->games; })->toArray()), SORT_REGULAR);
         }
 
     }

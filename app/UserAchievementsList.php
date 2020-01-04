@@ -26,11 +26,9 @@
             'user_achievement_timestamp',
         ];
 
-        protected $visible = [
-            'user_achievement_id',
-            'user_achievement_timestamp',
-            'user_achievement_name',
-            'user_achievement_description',
+        protected $hidden = [
+            'id',
+            'user_id',
         ];
 
         protected $appends = [

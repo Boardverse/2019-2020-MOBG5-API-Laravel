@@ -24,14 +24,17 @@
             'language_id',
         ];
 
-        protected $visible = [
-            'language_id',
-            'language_name',
+        protected $hidden = [
+            'game_id',
         ];
 
         protected $appends = [
             'language_name',
         ];
+
+        public function getLanguageAttribute() {
+            return $this->hasOne('App\Language', 'language_id', 'language_id')->get()->first();
+        }
 
         public function getLanguageNameAttribute() {
             return $this->hasOne('App\Language', 'language_id', 'language_id')->get()->first()->language_name;

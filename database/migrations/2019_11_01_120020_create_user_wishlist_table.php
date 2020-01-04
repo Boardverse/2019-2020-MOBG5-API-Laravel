@@ -15,10 +15,10 @@
             Schema::create('user_wishlists', function (Blueprint $table) {
                 $table->bigIncrements('id');
 
-                $table->bigInteger('game_id')->unsigned();
-                $table->foreign('game_id')->references('game_id')->on('games');
                 $table->bigInteger('user_id')->unsigned();
                 $table->foreign('user_id')->references('user_id')->on('users');
+                $table->bigInteger('game_id')->unsigned();
+                $table->foreign('game_id')->references('game_id')->on('games');
 
                 $table->unique(['game_id', 'user_id']);
             });

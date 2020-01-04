@@ -24,16 +24,24 @@
             'game_type_id',
         ];
 
-        protected $visible = [
-            'game_type_name',
-            'game_type_id',
+        protected $hidden = [
+            'id',
+            'game_id',
         ];
 
         protected $appends = [
             'game_type_name',
         ];
 
-        public function getGameTYpeNameAttribute() {
+        public function getTypeAttribute() {
+            return $this->hasOne('App\GameType', 'game_type_id', 'game_type_id')->get()->first();
+        }
+
+        public function getGameTypeNameAttribute() {
             return $this->hasOne('App\GameType', 'game_type_id', 'game_type_id')->get()->first()->game_type_name;
+        }
+
+        public function getGameAttribute() {
+            return $this->hasOne('App\Game', 'game_id', 'game_id')->get()->first()->minGame;
         }
     }

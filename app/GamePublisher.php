@@ -24,7 +24,7 @@
             'game_publisher_name',
         ];
 
-        protected $visible = [
-            'game_publisher_name',
-        ];
+        public function getGamesAttribute() {
+            return $this->hasMany('App\GamePublishersList', 'game_publisher_id', 'game_publisher_id')->get()->map(function($item) { return $item->game; });
+        }
     }

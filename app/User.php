@@ -30,18 +30,15 @@
             'user_password',
         ];
 
-        protected $visible = [
-            'user_id',
-            'user_name',
-            'user_icon_url',
-            'games_owned',
-            'games_reviewed',
-            'games_wishlisted',
-            'games_played',
-        ];
-
         protected $casts = [
             'email_verified_at' => 'datetime',
+        ];
+
+        protected $hidden = [
+            'user_email',
+            'user_email_verified_at',
+            'user_password',
+            'remember_token',
         ];
 
         protected $appends = [
@@ -95,10 +92,13 @@
             return $this->hasMany('App\UserAchievementsList', 'user_id', 'user_id')->get();
         }
 
+        // TODO
         public function getActivityAttribute() {
             return [];
         }
 
-
+        public function getFriendsLovingAttribute() {
+            return $this->hasMany('App\UserFriend', 'user_id', 'user_id')->get()->map(function($item) { return $item->firend->loving; });
+        }
 
     }

@@ -5,6 +5,7 @@
     use App\Http\Middleware\Authenticate;
     use App\Http\Middleware\CheckForMaintenanceMode;
     use App\Http\Middleware\EncryptCookies;
+    use App\Http\Middleware\Login;
     use App\Http\Middleware\RedirectIfAuthenticated;
     use App\Http\Middleware\TrimStrings;
     use App\Http\Middleware\TrustProxies;
@@ -81,6 +82,7 @@
             'signed'           => ValidateSignature::class,
             'throttle'         => ThrottleRequests::class,
             'verified'         => EnsureEmailIsVerified::class,
+            'login'            => Login::class,
         ];
 
         /**

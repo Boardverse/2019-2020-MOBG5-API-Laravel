@@ -24,17 +24,25 @@
             'game_theme_id',
         ];
 
-        protected $visible = [
-            'game_theme_name',
-            'game_theme_id',
+        protected $hidden = [
+            'id',
+            'game_id',
         ];
 
         protected $appends = [
             'game_theme_name',
         ];
 
+        public function getThemeAttribute() {
+            return $this->hasOne('App\GameTheme', 'game_theme_id', 'game_theme_id')->get()->first();
+        }
+
         public function getGameThemeNameAttribute() {
             return $this->hasOne('App\GameTheme', 'game_theme_id', 'game_theme_id')->get()->first()->game_theme_name;
+        }
+
+        public function getGameAttribute() {
+            return $this->hasOne('App\Game', 'game_id', 'game_id')->get()->first()->minGame;
         }
 
     }

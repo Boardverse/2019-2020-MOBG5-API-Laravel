@@ -25,8 +25,4 @@
             'game_author_name',
         ];
 
-        protected $visible = [
-            'game_author_name',
-        ];
-
     }

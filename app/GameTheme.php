@@ -24,6 +24,11 @@
             'game_theme_name' => NULL,
         ];
 
+        protected $hidden = [
+            'id',
+            'language_id',
+        ];
+
         protected $fillable = [
             'game_theme_id',
             'language_id',
@@ -31,8 +36,8 @@
             'game_theme_name',
         ];
 
-        protected $visible = [
-            'game_theme_name',
-        ];
+        public function getGamesAttribute() {
+            return $this->hasMany('App\GameThemesList', 'game_theme_id', 'game_theme_id')->get()->map(function($item) { return $item->game; });
+        }
 
     }
