@@ -21,6 +21,7 @@
             'user_icon_url' => NULL,
             'user_email' => NULL,
             'user_password' => NULL,
+            'joined_timestamp' => NULL,
         ];
 
         protected $fillable = [
@@ -28,17 +29,15 @@
             'user_icon_url',
             'user_email',
             'user_password',
-        ];
-
-        protected $casts = [
-            'email_verified_at' => 'datetime',
+            'token',
+            'joined_timestamp',
         ];
 
         protected $hidden = [
             'user_email',
-            'user_email_verified_at',
             'user_password',
-            'remember_token',
+            'token',
+            'joined_timestamp',
         ];
 
         protected $appends = [

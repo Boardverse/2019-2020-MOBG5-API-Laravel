@@ -10,7 +10,7 @@
 
         public function handle($request, Closure $next, $guard = NULL) {
 
-            if(!-self::getUser()) {
+            if(!self::getUser()) {
                 return response()->json([
                     'errors' => [
                         [

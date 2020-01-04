@@ -4,7 +4,12 @@
 
     Route::get('', function() { return response('', 200); })->name('/');
 
+    Route::get('/login', 'UserController@login');
+    Route::post('/register', 'UserController@register');
+
     Route::middleware(['login'])->group(function() {
+        Route::get('/user', 'UserController@user');
+
         Route::get('games/friendsLoving', 'UserController@friendsLoving');
         Route::get('games/friendsPlaying', 'UserController@friendsPlaying');
         Route::get('games/{game}/friendsOwning', 'GameController@friendsOwning');

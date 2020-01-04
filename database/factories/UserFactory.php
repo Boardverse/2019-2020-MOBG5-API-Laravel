@@ -11,12 +11,13 @@
      */
     $factory->define(User::class,
         function(Faker $faker) {
+            $timestamp = rand(0, time() * 1000);
             return [
                 'user_name'              => $faker->name,
                 'user_icon_url'          => $faker->imageUrl(),
                 'user_email'             => $faker->unique()->safeEmail,
-                'user_email_verified_at' => now(),
-                'user_password'          => Hash::make($faker->unique()->password),
-                'remember_token'         => Str::random(10),
+                'user_password'          => hash('sha256', $faker->unique()->password . $timestamp),
+                'token'                  => random_bytes(32),
+                'joined_timestamp'       => $timestamp,
             ];
         });
