@@ -48,6 +48,11 @@
             'game_max_age',
         ];
 
+        protected $casts = [
+            "game_publishing_date" => "integer",
+            "game_score" => "float",
+        ];
+
         protected $appends = [
             'game_name',
             'game_types',

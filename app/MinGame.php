@@ -38,6 +38,10 @@
             'game_max_age',
         ];
 
+        protected $casts = [
+            "game_score" => "float",
+        ];
+
         protected $appends = [
             'game_name',
             'game_score',
