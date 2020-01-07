@@ -101,13 +101,13 @@
 
         public function sameTheme(Game $game) {
             return response()->json([
-                'data' => $game->sameTheme,
+                'data' => $game->sameTheme[0],
             ]);
         }
 
         public function sameType(Game $game) {
             return response()->json([
-                'data' => $game->sameType,
+                'data' => $game->sameType[0],
             ]);
         }
 

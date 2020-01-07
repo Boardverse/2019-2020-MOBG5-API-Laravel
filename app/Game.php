@@ -154,11 +154,11 @@
         }
 
         public function getSameThemeAttribute() {
-            return array_unique(array_merge($this->hasMany('App\GameThemesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->theme->games; })->toArray()), SORT_REGULAR);
+            return array_unique(array_merge_recursive($this->hasMany('App\GameThemesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->theme->games; })->toArray()), SORT_REGULAR);
         }
 
         public function getSameTypeAttribute() {
-            return array_unique(array_merge($this->hasMany('App\GameTypesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->type->games; })->toArray()), SORT_REGULAR);
+            return array_unique(array_merge_recursive($this->hasMany('App\GameTypesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->type->games; })->toArray()), SORT_REGULAR);
         }
 
         public function getFriendsOwningAttribute() {
