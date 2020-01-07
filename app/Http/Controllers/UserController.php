@@ -22,10 +22,12 @@
 
         public function login(Request $request) {
             $user = User::where('user_name', $request->input('name'))->get()->first();
-            if($user->user_password == hash('sha256', $request->input('password') . $user->joined_timestamp)) {
-                $token = random_bytes(32);
+            if($user && $user->user_password == hash('sha256', $request->input('password') . $user->joined_timestamp)) {
+                $token = bin2hex(random_bytes(32));
                 $user->token = $token;
-                return response()->cookie('token', $token, 60 * 24 * 30);
+                return response()->json([
+                    'data' => 'ok',
+                ])->cookie('token', $token, 60 * 24 * 30);
             } else {
                 return response()->json([
                     'errors' => [
@@ -79,9 +81,11 @@
             ]);
             $user->save();
 
-            $token = random_bytes(32);
+            $token = bin2hex(random_bytes(32));
             $user->token = $token;
-            return response()->cookie('token', $token, 60 * 24 * 30);
+            return response()->json([
+                'data' => 'ok',
+            ])->cookie('token', $token, 60 * 24 * 30);
         }
 
         public function user() {

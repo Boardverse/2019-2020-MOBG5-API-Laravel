@@ -4,7 +4,7 @@
 
     Route::get('', function() { return response('', 200); })->name('/');
 
-    Route::get('/login', 'UserController@login');
+    Route::post('/login', 'UserController@login');
     Route::post('/register', 'UserController@register');
 
     Route::middleware(['login'])->group(function() {

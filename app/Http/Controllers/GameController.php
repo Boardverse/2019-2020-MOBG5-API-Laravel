@@ -127,13 +127,15 @@
         // TODO
         public function friendsOwning(Game $game) {
 		    return response()->json([
-		        'data' => [],
+		        'data' => $game->friendsOwning,
             ]);
         }
 
         // TODO
-        public function friendsLoving() {
-
+        public function friendsLoving(Game $game) {
+            return response()->json([
+                'data' => $game->friendsLoving,
+            ]);
         }
 
 	}

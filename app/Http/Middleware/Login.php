@@ -26,6 +26,6 @@
         }
 
         public static function getUser(): ?User {
-            return User::where('remember_token', Cookie::get('token'))->get()->first();
+            return User::where('token', Cookie::get('token'))->get()->first();
         }
     }
