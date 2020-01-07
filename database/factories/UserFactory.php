@@ -17,7 +17,7 @@
                 'user_icon_url'          => $faker->imageUrl(),
                 'user_email'             => $faker->unique()->safeEmail,
                 'user_password'          => hash('sha256', $faker->unique()->password . $timestamp),
-                'token'                  => random_bytes(32),
+                'token'                  => bin2hex(random_bytes(32)),
                 'joined_timestamp'       => $timestamp,
             ];
         });

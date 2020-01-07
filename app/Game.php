@@ -2,6 +2,7 @@
 
     namespace App;
 
+    use App\Http\Middleware\Login;
     use Illuminate\Database\Eloquent\Model;
     use Illuminate\Support\Facades\DB;
     use function foo\func;
@@ -153,6 +154,11 @@
 
         public function getSameTypeAttribute() {
             return array_unique(array_merge($this->hasMany('App\GameTypesList', 'game_id', 'game_id')->get()->map(function($item) { return $item->type->games; })->toArray()), SORT_REGULAR);
+        }
+
+        public function getFriendsOwningAttribute() {
+            return Login::getUser()->hasMany('App\UserFriend', 'user_id', 'user_id')->join('user_collection', 'user_id', '=', 'user_id')->get();
+            return $this->hasMany('App\UserFriend', 'user_id', 'user_id')->join('user_collection', 'user_id', 'user_id')->where('game_id', $this->game_id)->get();
         }
 
     }
