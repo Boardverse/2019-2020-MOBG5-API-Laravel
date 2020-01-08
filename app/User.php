@@ -79,6 +79,10 @@
             return $this->hasMany('App\GameScore', 'user_id', 'user_id')->get();
         }
 
+        public function getReviewedAttribute() {
+            return $this->hasMany('App\GameScore', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
+        }
+
         public function getPlayedAttribute() {
             return $this->hasMany('App\UserPlayed', 'user_id', 'user_id')->get()->map(function($item) { return $item->game; });
         }

@@ -46,5 +46,6 @@
     Route::get('users/{user}/friends', 'UserController@friends');
     Route::get('users/{user}/played', 'UserController@played');
     Route::get('users/{user}/reviews', 'UserController@reviews');
+    Route::get('users/{user}/reviewed', 'UserController@reviewed');
     Route::get('users/{user}/wishlist', 'UserController@wishlist');
     Route::apiResource('users', 'UserController');

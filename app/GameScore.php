@@ -33,4 +33,8 @@
             'game_score',
         ];
 
+        public function getGameAttribute() {
+            return $this->hasOne('App\MinGame', 'game_id', 'game_id')->get();
+        }
+
     }

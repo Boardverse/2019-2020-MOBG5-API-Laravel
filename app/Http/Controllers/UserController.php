@@ -112,6 +112,12 @@
             ]);
         }
 
+        public function reviewed(User $user) {
+            return response()->json([
+                'data' => $user->reviewed[0],
+            ]);
+        }
+
         public function played(User $user) {
             return response()->json([
                 'data' => $user->played,
